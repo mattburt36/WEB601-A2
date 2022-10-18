@@ -14,14 +14,23 @@ The system enterprise includes the basic Online store features, for example,
   • Products and Categories 
   • Customer 
   • Orders
+  
 The web app server-side should provide the features as follows: 
+
   • Customer should be able to: 
+    
     o Register and log in 
+    
     o Purchase must be made with registration 
+    
     o Browse for products 
-    o Search for products 
+    
+    o Search for products
+    
     o Add products to a cart 
+    
     o Check out to complete an order 
+    
     o View an order’s status  
     
 The web app server-side allows admin to maintain their records in SQL. 
