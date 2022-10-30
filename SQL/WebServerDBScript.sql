@@ -41,7 +41,7 @@ CREATE TABLE productT
     productDesc VARCHAR(100),
     categoryID INT NULL,
 	quantity INT,
-    FOREIGN KEY (categoryID) REFERENCES categoryT (categoryID)
+    FOREIGN KEY (categoryID) REFERENCES categoryT (categoryID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE orderT
@@ -50,8 +50,8 @@ CREATE TABLE orderT
     customerID INT NULL,
     productID INT NULL,
 	trackingID INT NULL,
-    FOREIGN KEY (customerID) REFERENCES customerT (customerID),
-    FOREIGN KEY (productID) REFERENCES productT (productID)
+    FOREIGN KEY (customerID) REFERENCES customerT (customerID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (productID) REFERENCES productT (productID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE cartT
@@ -59,8 +59,8 @@ CREATE TABLE cartT
 	cartID INT PRIMARY KEY auto_increment,
     customerID INT NULL,
     productID INT NULL,
-    FOREIGN KEY (customerID) REFERENCES customerT (customerID),
-    FOREIGN KEY (productID) REFERENCES productT (productID)
+    FOREIGN KEY (customerID) REFERENCES customerT (customerID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (productID) REFERENCES productT (productID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE sessionT
@@ -69,10 +69,10 @@ CREATE TABLE sessionT
     customerID INT NULL,
     productID INT NULL,
     cartID INT NULL,
-    FOREIGN KEY (customerID) REFERENCES customerT (customerID),
-    FOREIGN KEY (productID) REFERENCES productT (productID),
-    FOREIGN KEY (cartID) REFERENCES cartT (cartID)
+    FOREIGN KEY (customerID) REFERENCES customerT (customerID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (productID) REFERENCES productT (productID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (cartID) REFERENCES cartT (cartID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 END//
 DELIMITER ;
-CALL prMakecarttcategorytWebServerDB();
+CALL prMakeWebServerDB();

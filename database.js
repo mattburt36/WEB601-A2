@@ -5,6 +5,6 @@ module.exports = mysql.createConnection(
         host: 'localhost',
         user: 'root',
         password: 'Psb0821',
-        database: 'SampleApp',
+        database: 'WebServerDB',
     }
 );
