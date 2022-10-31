@@ -23,6 +23,7 @@ DROP TABLE IF EXISTS sessionT;
 CREATE TABLE categoryT
 (
 	categoryID INT PRIMARY KEY auto_increment,
+    categoryName VARCHAR(50),
     categoryDesc VARCHAR(100)
 );
 

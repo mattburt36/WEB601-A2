@@ -29,7 +29,7 @@ router.get('/login', async(req, res) =>
             }
             catch(err)
             {
-                res.status(418).send('Server update failure')
+                res.status(500).send('Server update failure')
                 console.log(err);
             }
         }
@@ -64,7 +64,7 @@ router.post('/register', (req, res) =>
         catch(err)
         {
             //Catch any errors
-            res.status(418).send('Server update failure')
+            res.status(500).send('Server update failure')
             console.log(err);
         }
     };
@@ -82,7 +82,7 @@ router.post('/editacc', (req, res) =>
         }
         catch(err)
         {
-            res.status(418).send('Server update failure');
+            res.status(500).send('Server update failure');
             console.log(err);
         }
     }
@@ -93,18 +93,28 @@ router.post('/editacc', (req, res) =>
 });
 
 //Remove account
-router.post('/removeacc', async(req, res) =>
+router.delete('/removeacc', async(req, res) =>
 {
     const {customerID} = req.body; 
     const found = await db.promise().query(`SELECT customerEmail FROM customerT WHERE customerID = '${customerID}'`);   
 
     if((found[0][0]) && (Object.values(found[0][0]) != null))
     {
-        db.promise().query(`DELETE FROM customerT WHERE customerID = '${customerID}'`);
+        try
+        {
+            db.promise().query(`DELETE FROM customerT WHERE customerID = '${customerID}'`);
+            res.status(200).send('Account deleted successfully');
+        }
+        catch(err)
+        {
+            console.log(err);
+            res.status(500);
+        }
     }
     else
     {
-        res.status(400).send('Please enter ID to delete');
+        res.status(418).send('Please enter valid customer ID to delete, value entered not found');
     }
 });
+
 module.exports = router; 

@@ -3,6 +3,8 @@ const express = require('express');
 const session = require('express-session');
 
 const customerRoute = require('./routes/customer');
+const categoryRoute = require('./routes/category');
+
 const store = new session.MemoryStore();
 const app = express();
 
@@ -30,6 +32,7 @@ app.use(session(
     }));
 
 app.use('/customer', customerRoute);
+app.use('/category', categoryRoute);
 
 //------------------------------------------------------------
 //Listen to port 
