@@ -39,10 +39,11 @@ CREATE TABLE customerT
 CREATE TABLE productT
 (
 	productID INT PRIMARY KEY auto_increment,
-    productDesc VARCHAR(100),
+    productName VARCHAR(100),
     categoryID INT NULL,
 	quantity INT,
-    FOREIGN KEY (categoryID) REFERENCES categoryT (categoryID) ON DELETE CASCADE ON UPDATE CASCADE
+    price DEC, 
+    FOREIGN KEY (categoryID) REFERENCES categoryT (categoryID) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE orderT
@@ -51,8 +52,9 @@ CREATE TABLE orderT
     customerID INT NULL,
     productID INT NULL,
 	trackingID INT NULL,
-    FOREIGN KEY (customerID) REFERENCES customerT (customerID) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (productID) REFERENCES productT (productID) ON DELETE CASCADE ON UPDATE CASCADE
+    orderDate VARCHAR(100), 
+    FOREIGN KEY (customerID) REFERENCES customerT (customerID) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (productID) REFERENCES productT (productID) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE cartT
