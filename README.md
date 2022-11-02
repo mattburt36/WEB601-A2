@@ -35,3 +35,5 @@ The web app server-side should provide the features as follows:
     
 The web app server-side allows admin to maintain their records in SQL. 
 The web app server side should support the basic CRUD (Create, Read, Update and Delete) operations to the database table.
+
+Please find the work completed for API calls to the database under the "routes" folder and the database under the "SQL" folder. 
